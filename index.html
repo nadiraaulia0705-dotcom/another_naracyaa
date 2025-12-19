@@ -72,7 +72,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Efek hover yang bouncy dan kece */
+        /* Efek hover yang bouncy */
         .link-btn:hover {
             background: white;
             color: black;
@@ -107,14 +107,14 @@
 
         <a href="https://tiktok.com/@naracyaa__" class="link-btn">tiktok</a>
         <a href="https://instagram.com/naracyaa__" class="link-btn">instagram</a>
-        <a href="https://roblox.com/users/id_kamu" class="link-btn">roblox</a>
+        <a href="https://roblox.com/users/USER_ID_KAMU" class="link-btn">roblox</a>
         <a href="#" class="link-btn">another thoughts</a>
     </div>
 
-    <audio id="myMusic" src="music_bio.mp3" loop></audio>
+    <audio id="myMusic" src="music_bio.aac" loop></audio>
 
     <script>
-        // Musik mulai setelah user klik layar pertama kali
+        // Musik mulai setelah user tap layar pertama kali
         document.body.addEventListener('click', function() {
             const audio = document.getElementById('myMusic');
             if (audio.paused) {
@@ -122,7 +122,7 @@
             }
         }, { once: true });
 
-        // Script untuk generate bintang terbang secara acak
+        // Script bintang terbang otomatis
         const starField = document.getElementById('star-field');
         function createStar() {
             const star = document.createElement('div');
