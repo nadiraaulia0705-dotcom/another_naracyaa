@@ -5,34 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Links | Seraphina*ra</title>
     <style>
-        /* --- BACKGROUND & EFEK BINTANG --- */
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background: #000 url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Times New Roman', serif;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; overflow: hidden;
+            cursor: pointer; /* Memberi petunjuk agar user nge-klik */
         }
 
-        /* Container utama dengan transisi halus saat muncul */
         .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            width: 85%;
-            max-width: 400px;
-            animation: slideUp 1.2s ease-out;
+            position: relative; z-index: 2; text-align: center;
+            width: 85%; max-width: 400px;
             background: rgba(0, 0, 0, 0.4);
-            padding: 40px 20px;
-            border-radius: 20px;
+            padding: 40px 20px; border-radius: 20px;
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 1.2s ease-out;
         }
 
         @keyframes slideUp {
@@ -41,55 +32,29 @@
         }
 
         .profile-pic {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-bottom: 15px;
-            object-fit: cover;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 110px; height: 110px; border-radius: 50%;
+            border: 2px solid white; margin-bottom: 15px;
+            object-fit: cover; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
-        h1 {
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 25px;
-            text-transform: lowercase;
-        }
+        h1 { font-size: 1.5rem; letter-spacing: 4px; margin-bottom: 25px; text-transform: lowercase; }
 
-        /* --- TOMBOL DENGAN TRANSISI KECE --- */
         .link-btn {
-            display: block;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            text-decoration: none;
-            margin: 12px 0;
-            padding: 14px;
-            border-radius: 30px;
+            display: block; background: rgba(255, 255, 255, 0.05);
+            color: white; text-decoration: none; margin: 12px 0;
+            padding: 14px; border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Efek hover yang bouncy */
-        .link-btn:hover {
-            background: white;
-            color: black;
-            transform: scale(1.08);
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
-        }
+        .link-btn:hover { background: white; color: black; transform: scale(1.08); }
 
-        /* --- ANIMASI BINTANG TERBANG --- */
+        /* BINTANG */
         .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.6;
-            pointer-events: none;
+            position: absolute; background: white; border-radius: 50%;
+            opacity: 0.6; pointer-events: none;
             animation: fly linear infinite;
         }
-
         @keyframes fly {
             from { transform: translateY(100vh) scale(0); opacity: 0; }
             50% { opacity: 1; }
@@ -97,43 +62,42 @@
         }
     </style>
 </head>
-<body>
+<body onclick="playMusic()">
 
     <div id="star-field"></div>
 
     <div class="container">
         <img src="nara.webp" alt="Profile" class="profile-pic">
         <h1>@naracyaa__</h1>
-
         <a href="https://tiktok.com/@naracyaa__" class="link-btn">tiktok</a>
         <a href="https://instagram.com/naracyaa__" class="link-btn">instagram</a>
-        <a href="https://roblox.com/users/USER_ID_KAMU" class="link-btn">roblox</a>
+        <a href="https://roblox.com/users/USER_ID" class="link-btn">roblox</a>
         <a href="#" class="link-btn">another thoughts</a>
     </div>
 
     <audio id="myMusic" src="music_bio.aac" loop></audio>
 
     <script>
-        // Musik mulai setelah user tap layar pertama kali
-        document.body.addEventListener('click', function() {
-            const audio = document.getElementById('myMusic');
-            if (audio.paused) {
-                audio.play();
+        // FUNGSI PLAY OTOMATIS SAAT KLIK PERTAMA
+        let musicStarted = false;
+        function playMusic() {
+            if (!musicStarted) {
+                const audio = document.getElementById('myMusic');
+                audio.play().catch(error => console.log("Menunggu interaksi..."));
+                musicStarted = true;
             }
-        }, { once: true });
+        }
 
-        // Script bintang terbang otomatis
+        // BINTANG TERBANG
         const starField = document.getElementById('star-field');
         function createStar() {
             const star = document.createElement('div');
             star.className = 'star';
             const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
+            star.style.width = size; star.style.height = size;
             star.style.left = Math.random() * 100 + 'vw';
             star.style.animationDuration = Math.random() * 2 + 3 + 's';
             starField.appendChild(star);
-
             setTimeout(() => { star.remove(); }, 5000);
         }
         setInterval(createStar, 150);
