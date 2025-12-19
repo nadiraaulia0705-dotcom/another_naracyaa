@@ -3,117 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links | SeraphiNa*ra </title>
+    <title>My Personal Links | Seraphina*ra</title>
     <style>
-        /* Animasi Muncul Dasar */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* --- BACKGROUND & EFEK BINTANG --- */
         body {
-            font-family: 'Times New Roman', Times, serif;
-            /* Memastikan background terpanggil dengan benar */
-            background: #222 url('bg.jpg') no-repeat center center fixed; 
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             margin: 0;
+            padding: 0;
+            background: #000 url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Times New Roman', serif;
             color: white;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
+        /* Container utama dengan transisi halus saat muncul */
         .container {
-            width: 90%;
-            max-width: 400px;
+            position: relative;
+            z-index: 2;
             text-align: center;
-            background: transparent; 
-            padding: 20px;
+            width: 85%;
+            max-width: 400px;
+            animation: slideUp 1.2s ease-out;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animasi untuk Foto Profil */
-        .profile-img {
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-pic {
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            border: 3px solid white;
+            border: 2px solid white;
             margin-bottom: 15px;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out forwards;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            font-weight: bold;
-            text-shadow: 2px 2px 8px rgba(0,0,0,1);
-            animation: fadeInUp 1s ease-out 0.2s forwards; /* Muncul sedikit lebih lambat */
-            opacity: 0; /* Mulai dari tidak terlihat */
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            text-transform: lowercase;
         }
 
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-card {
-            background: white;
-            color: #333;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        /* --- TOMBOL DENGAN TRANSISI KECE --- */
+        .link-btn {
             display: block;
-            opacity: 0; /* Disembunyikan dulu untuk animasi */
-            animation: fadeInUp 0.8s ease-out forwards;
-            transition: all 0.3s ease; /* Transisi saat kursor menyentuh tombol */
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            margin: 12px 0;
+            padding: 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Delay Animasi untuk tiap link agar muncul satu per satu */
-        .link-card:nth-child(1) { animation-delay: 0.4s; }
-        .link-card:nth-child(2) { animation-delay: 0.6s; }
-        .link-card:nth-child(3) { animation-delay: 0.8s; }
-        .link-card:nth-child(4) { animation-delay: 1.0s; }
-
-        .link-card:hover {
-            transform: translateY(-5px); 
-            background: #f0f0f0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        /* Efek hover yang bouncy dan kece */
+        .link-btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.08);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
         }
 
-        .telegram { border-left: 10px solid #0088cc; }
-        .tiktok { border-left: 10px solid #010101; }
-        .instagram { border-left: 10px solid #e1306c; }
-        .roblox { border-left: 10px solid #000000; }
+        /* --- ANIMASI BINTANG TERBANG --- */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: fly linear infinite;
+        }
 
+        @keyframes fly {
+            from { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            to { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
+    <div id="star-field"></div>
+
     <div class="container">
-        <img src="nara.webp" alt="Foto Profil" class="profile-img">
+        <img src="nara.webp" alt="Profile" class="profile-pic">
         <h1>@naracyaa__</h1>
 
-        <div class="links">
-            <a href="https://t.me/goodlookcing" target="_blank" class="link-card telegram">Another</a>
-            <a href="https://www.tiktok.com/@enjicya?_r=1&_t=ZS-92LQtmGhzmM" target="_blank" class="link-card tiktok">TikTok</a>
-            <a href="https://www.instagram.com/naracyaa__?igsh=MWhtenE1anJlanBtbQ==" target="_blank" class="link-card instagram">InstaGram</a>
-            <a href="https://www.roblox.com/share?code=df7e55880b33fa4cbaf61266d857f708&type=Profile&source=ProfileShare&stamp=1766123981307" target="_blank" class="link-card roblox">Roblox</a>
-        </div>
+        <a href="https://tiktok.com/@naracyaa__" class="link-btn">tiktok</a>
+        <a href="https://instagram.com/naracyaa__" class="link-btn">instagram</a>
+        <a href="https://roblox.com/users/id_kamu" class="link-btn">roblox</a>
+        <a href="#" class="link-btn">another thoughts</a>
     </div>
 
+    <audio id="myMusic" src="music_bio.mp3" loop></audio>
+
+    <script>
+        // Musik mulai setelah user klik layar pertama kali
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('myMusic');
+            if (audio.paused) {
+                audio.play();
+            }
+        }, { once: true });
+
+        // Script untuk generate bintang terbang secara acak
+        const starField = document.getElementById('star-field');
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 2 + 3 + 's';
+            starField.appendChild(star);
+
+            setTimeout(() => { star.remove(); }, 5000);
+        }
+        setInterval(createStar, 150);
+    </script>
 </body>
 </html>
