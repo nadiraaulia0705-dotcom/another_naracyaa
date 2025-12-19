@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links | SeraphiNa*ra </title>
+    <style>
+        /* Animasi Muncul Dasar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            /* Memastikan background terpanggil dengan benar */
+            background: #222 url('bg.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            background: transparent; 
+            padding: 20px;
+        }
+
+        /* Animasi untuk Foto Profil */
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1);
+            animation: fadeInUp 1s ease-out 0.2s forwards; /* Muncul sedikit lebih lambat */
+            opacity: 0; /* Mulai dari tidak terlihat */
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: block;
+            opacity: 0; /* Disembunyikan dulu untuk animasi */
+            animation: fadeInUp 0.8s ease-out forwards;
+            transition: all 0.3s ease; /* Transisi saat kursor menyentuh tombol */
+        }
+
+        /* Delay Animasi untuk tiap link agar muncul satu per satu */
+        .link-card:nth-child(1) { animation-delay: 0.4s; }
+        .link-card:nth-child(2) { animation-delay: 0.6s; }
+        .link-card:nth-child(3) { animation-delay: 0.8s; }
+        .link-card:nth-child(4) { animation-delay: 1.0s; }
+
+        .link-card:hover {
+            transform: translateY(-5px); 
+            background: #f0f0f0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .telegram { border-left: 10px solid #0088cc; }
+        .tiktok { border-left: 10px solid #010101; }
+        .instagram { border-left: 10px solid #e1306c; }
+        .roblox { border-left: 10px solid #000000; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="nara.webp" alt="Foto Profil" class="profile-img">
+        <h1>@naracyaa__</h1>
+
+        <div class="links">
+            <a href="https://t.me/goodlookcing" target="_blank" class="link-card telegram">Another</a>
+            <a href="https://www.tiktok.com/@enjicya?_r=1&_t=ZS-92LQtmGhzmM" target="_blank" class="link-card tiktok">TikTok</a>
+            <a href="https://www.instagram.com/naracyaa__?igsh=MWhtenE1anJlanBtbQ==" target="_blank" class="link-card instagram">InstaGram</a>
+            <a href="https://www.roblox.com/share?code=df7e55880b33fa4cbaf61266d857f708&type=Profile&source=ProfileShare&stamp=1766123981307" target="_blank" class="link-card roblox">Roblox</a>
+        </div>
+    </div>
+
+</body>
+</html>
