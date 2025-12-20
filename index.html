@@ -4,92 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Links | SERAPHINA'RA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0; padding: 0;
-            /* Pastikan file bg.jpg ada di GitHub kamu */
             background: #000 url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             color: white;
             display: flex; justify-content: center; align-items: center;
             min-height: 100vh; overflow: hidden;
             cursor: pointer;
         }
 
-        /* Overlay gelap agar teks lebih mudah dibaca */
         .overlay-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); z-index: 1;
+            background: rgba(0, 0, 0, 0.4); z-index: 1;
         }
 
         .container {
-            position: relative; z-index: 2; text-align: center;
+            position: relative; z-index: 10; text-align: center;
             width: 85%; max-width: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px 20px; border-radius: 25px;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            background: rgba(255, 255, 255, 0.05);
+            padding: 45px 20px; border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .profile-pic {
-            width: 110px; height: 110px; border-radius: 50%;
-            border: 2px solid white; margin-bottom: 20px;
-            object-fit: cover; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 1.5px solid white; margin-bottom: 20px;
+            object-fit: cover;
         }
 
-        /* Nama Kapital Semua & Jarak Huruf Lebar */
         h1 { 
-            font-size: 1.3rem; 
-            font-weight: 600;
-            letter-spacing: 6px; 
-            margin-bottom: 30px; 
+            font-size: 1.5rem; 
+            letter-spacing: 8px; 
+            margin-bottom: 35px; 
             text-transform: uppercase; 
-            color: #ffffff;
         }
 
         .link-btn {
             display: block; 
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             color: white; 
             text-decoration: none; 
-            margin: 15px 0;
-            padding: 15px; 
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.4s ease;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            margin: 12px 0;
+            padding: 14px; 
+            border-radius: 5px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
         }
 
         .link-btn:hover { 
             background: white; 
             color: black; 
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Animasi Bintang */
+        /* BINTANG BESAR & TERANG */
         .star {
-            position: absolute; background: white; border-radius: 50%;
-            opacity: 0.5; pointer-events: none;
-            animation: moveStar linear infinite;
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* Efek bercahaya */
+            animation: fly linear infinite;
         }
-        @keyframes moveStar {
-            from { transform: translateY(100vh); opacity: 0; }
-            50% { opacity: 1; }
+
+        @keyframes fly {
+            from { transform: translateY(110vh); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             to { transform: translateY(-10vh); opacity: 0; }
         }
     </style>
 </head>
-<body onclick="startEverything()">
+<body onclick="playMusic()">
 
     <div class="overlay-bg"></div>
     <div id="star-field"></div>
@@ -97,38 +88,48 @@
     <div class="container">
         <img src="nara.webp" alt="Profile" class="profile-pic">
         <h1>seraphina'ra</h1>
-        <a href="https://tiktok.com/@enjicya" class="link-btn" target="_blank">TikTok</a>
-        <a href="https://instagram.com/naracyaa__" class="link-btn" target="_blank">InstaGram</a>
-        <a href="https://www.roblox.com/share?code=df7e55880b33fa4cbaf61266d857f708&type=Profile&source=ProfileShare&stamp=1766199589511" class="link-btn" target="_blank">Roblox</a>
-        <a href="https://t.me/goodlookcing" class="link-btn">Another</a>
+        <a href="https://tiktok.com/@naracyaa__" class="link-btn" target="_blank">TIKTOK</a>
+        <a href="https://instagram.com/naracyaa__" class="link-btn" target="_blank">INSTAGRAM</a>
+        <a href="https://roblox.com/users/USER_ID" class="link-btn" target="_blank">ROBLOX</a>
+        <a href="#" class="link-btn">ANOTHER</a>
     </div>
 
     <audio id="myMusic" src="music_bio.aac" loop></audio>
 
     <script>
         let isStarted = false;
-        function startEverything() {
+        function playMusic() {
             if (!isStarted) {
-                // Mainkan Musik
-                const audio = document.getElementById('myMusic');
-                audio.play().catch(e => console.log("Musik butuh klik"));
+                document.getElementById('myMusic').play();
                 isStarted = true;
             }
         }
 
-        // Bintang Terbang Otomatis
+        // FUNGSI BINTANG BESAR
         const starField = document.getElementById('star-field');
         function createStar() {
             const star = document.createElement('div');
             star.className = 'star';
-            const size = Math.random() * 2 + 'px';
-            star.style.width = size; star.style.height = size;
+            
+            // Ukuran bintang dibuat lebih besar (3px sampai 6px)
+            const size = Math.random() * 4 + 3 + 'px'; 
+            star.style.width = size;
+            star.style.height = size;
+            
             star.style.left = Math.random() * 100 + 'vw';
-            star.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            // Kecepatan terbang beda-beda
+            const duration = Math.random() * 3 + 4 + 's';
+            star.style.animationDuration = duration;
+            
             starField.appendChild(star);
-            setTimeout(() => { star.remove(); }, 5000);
+            
+            // Hapus bintang setelah terbang
+            setTimeout(() => { star.remove(); }, 7000);
         }
-        setInterval(createStar, 200);
+
+        // Munculkan bintang lebih sering
+        setInterval(createStar, 150);
     </script>
 </body>
 </html>
