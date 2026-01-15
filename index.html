@@ -17,14 +17,13 @@
             background: #080808;
             font-family: 'Times New Roman', serif;
             color: #fff;
-            display: flex; justify-content: center; align-items: center;
+            display: flex; justify-content: center; align-items: flex-start; /* Biar bisa scroll dari atas */
             min-height: 100vh; 
-            /* Menghapus overflow: hidden agar bisa scroll jika konten panjang di HP */
-            overflow-y: auto; 
-            padding: 40px 0;
+            overflow-y: auto; /* Aktifkan scroll vertical */
+            padding: 50px 0; /* Jarak atas bawah agar tidak nempel layar */
         }
 
-        /* Custom Scrollbar agar tetap estetik */
+        /* Scrollbar Estetik */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #080808; }
         ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
@@ -40,20 +39,19 @@
             width: 90%; max-width: 480px;
             background: var(--glass-bg);
             padding: 40px; border-radius: 35px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             box-shadow: 0 30px 60px rgba(0,0,0,0.7);
             text-align: center;
-            /* Memastikan container menyesuaikan tinggi konten */
-            height: auto;
-            min-height: 500px;
+            height: auto; /* Mengikuti isi konten */
+            margin-bottom: 50px;
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
 
@@ -87,7 +85,7 @@
 
         .nav-tabs {
             display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 15px;
         }
 
@@ -104,13 +102,7 @@
             font-weight: bold;
         }
 
-        .content-section { 
-            display: none; 
-            animation: fadeIn 0.8s ease forwards;
-            /* Memastikan teks tidak terpotong */
-            padding-bottom: 20px; 
-        }
-
+        .content-section { display: none; animation: fadeIn 0.6s ease forwards; }
         .content-section.active { display: block; }
 
         @keyframes fadeIn {
@@ -124,7 +116,7 @@
             color: #ccc; text-decoration: none; 
             margin: 15px 0; padding: 18px 25px; 
             border-radius: 15px; border: 1px solid var(--glass-border);
-            transition: 0.4s;
+            transition: 0.3s;
             font-size: 0.8rem; letter-spacing: 2px;
         }
 
@@ -139,8 +131,7 @@
             line-height: 1.8;
             color: #ccc;
             text-align: justify;
-            /* Mengizinkan konten memanjang */
-            overflow: visible; 
+            padding: 0 5px;
         }
 
         .bio-text p { margin-bottom: 20px; font-style: italic; }
@@ -202,7 +193,7 @@
         <div id="about" class="content-section">
             <div class="bio-text">
                 <p>
-                    Halo! Saya <strong>Nadira Aulia Nur Firda</strong>, atau biasa dipanggil <strong>Nara</strong>. Saya adalah seorang mahasiswa Pendidikan Teknologi Informasi di Universitas Slamet Riyadi Surakarta. Berawal dari pengalaman saya sebagai vokalis utama band saat SMK, kini saya mengeksplorasi harmoni baru melalui dunia teknologi.
+                    Perkenalkan nama saya <strong>Nadira Aulia Nur Firda</strong>, teman-teman saya biasa memanggil saya <strong>"NARA"</strong>. Saya adalah seorang mahasiswa Pendidikan Teknologi Informasi di Universitas Slamet Riyadi Surakarta. Berawal dari pengalaman saya sebagai vokalis utama band saat SMK, kini saya mengeksplorasi harmoni baru melalui dunia teknologi.
                 </p>
                 <p>
                     Sebagai seorang <i>dreamer</i>, saya senang memadukan nuansa musik yang kuat seperti vibe "Mask Off" ke dalam fokus saya membangun pengalaman digital. Bagi saya, IT bukan sekadar baris kode, melainkan medium kreatif untuk membantu manusia, terutama melalui perkembangan AI yang sangat inspiratif. Saya berkomitmen untuk menciptakan karya yang tidak hanya estetik, namun juga berdampak nyata bagi dunia.
