@@ -23,6 +23,7 @@
             padding: 60px 0;
         }
 
+        /* Scrollbar Estetik */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #080808; }
         ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
@@ -234,6 +235,7 @@
     <audio id="myMusic" src="music_bio.aac" loop></audio>
 
     <script>
+        // 1. Fungsi Tab System
         function showTab(tabId, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -253,22 +255,33 @@
             }
         }
 
+        // 2. Fungsi Pesan Rahasia
         function showSecret() {
             const msg = document.getElementById('secret-msg');
             msg.style.display = 'block';
             setTimeout(() => { msg.style.display = 'none'; }, 2500);
         }
 
+        // 3. Logika Musik (Mainkan & Matikan saat klik link)
         let isStarted = false;
+        const music = document.getElementById('myMusic');
+
         function playMusic() {
             if (!isStarted) {
-                const music = document.getElementById('myMusic');
                 music.volume = 0.4;
                 music.play().catch(() => {});
                 isStarted = true;
             }
         }
 
+        // Matikan musik otomatis saat link eksternal diklik
+        document.querySelectorAll('.link-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                if(isStarted) music.pause();
+            });
+        });
+
+        // 4. Efek Bintang (Gold & White)
         const starField = document.getElementById('star-field');
         function createStar() {
             const star = document.createElement('div');
