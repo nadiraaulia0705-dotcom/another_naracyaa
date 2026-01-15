@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NADIRA AULIA | Digital Portfolio</title>
+    <title>SERAPHINA'RA | Digital Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -18,8 +18,16 @@
             font-family: 'Times New Roman', serif;
             color: #fff;
             display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; overflow: hidden;
+            min-height: 100vh; 
+            /* Menghapus overflow: hidden agar bisa scroll jika konten panjang di HP */
+            overflow-y: auto; 
+            padding: 40px 0;
         }
+
+        /* Custom Scrollbar agar tetap estetik */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
 
         .overlay-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -37,6 +45,9 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 30px 60px rgba(0,0,0,0.7);
             text-align: center;
+            /* Memastikan container menyesuaikan tinggi konten */
+            height: auto;
+            min-height: 500px;
             animation: float 6s ease-in-out infinite;
         }
 
@@ -52,14 +63,11 @@
             margin-bottom: 20px;
             object-fit: cover;
             padding: 5px;
-            transition: 0.5s;
         }
 
-        .profile-pic:hover { transform: scale(1.1); filter: brightness(1.2); }
-
         h1 { 
-            font-size: 1.6rem; 
-            letter-spacing: 6px; 
+            font-size: 1.8rem; 
+            letter-spacing: 10px; 
             margin: 10px 0;
             text-transform: uppercase;
             font-weight: 400;
@@ -96,7 +104,13 @@
             font-weight: bold;
         }
 
-        .content-section { display: none; animation: fadeIn 0.8s ease forwards; }
+        .content-section { 
+            display: none; 
+            animation: fadeIn 0.8s ease forwards;
+            /* Memastikan teks tidak terpotong */
+            padding-bottom: 20px; 
+        }
+
         .content-section.active { display: block; }
 
         @keyframes fadeIn {
@@ -110,28 +124,26 @@
             color: #ccc; text-decoration: none; 
             margin: 15px 0; padding: 18px 25px; 
             border-radius: 15px; border: 1px solid var(--glass-border);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: 0.4s;
             font-size: 0.8rem; letter-spacing: 2px;
         }
-
-        .link-btn i { color: var(--primary-gold); font-size: 1.1rem; }
 
         .link-btn:hover { 
             background: rgba(197, 160, 89, 0.1);
             color: #fff;
-            transform: scale(1.02);
             border-color: var(--primary-gold);
         }
 
         .bio-text {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #ccc;
             text-align: justify;
-            padding: 0 10px;
+            /* Mengizinkan konten memanjang */
+            overflow: visible; 
         }
 
-        .bio-text p { margin-bottom: 15px; font-style: italic; }
+        .bio-text p { margin-bottom: 20px; font-style: italic; }
 
         .star {
             position: absolute; background: white; border-radius: 50%;
@@ -153,7 +165,7 @@
 
     <div class="container">
         <img src="nara.webp" alt="Profile" class="profile-pic">
-        <h1>Nadira Aulia</h1>
+        <h1>seraphina'ra</h1>
         <div class="tagline">Digital Creator & Mahasiswa PTI</div>
 
         <div class="nav-tabs">
@@ -182,7 +194,7 @@
                 <span><i class="fas fa-leaf"></i> &nbsp; PLANT QUEST GAME</span>
                 <i class="fas fa-external-link-alt"></i>
             </a>
-            <div style="font-size: 0.7rem; color: #555; margin-top: 20px; letter-spacing: 1px;">
+            <div style="font-size: 0.7rem; color: #555; margin-top: 20px;">
                 "Powered by curiosity & a bit of AI Magic"
             </div>
         </div>
@@ -193,7 +205,7 @@
                     Halo! Saya <strong>Nadira Aulia Nur Firda</strong>, atau biasa dipanggil <strong>Nara</strong>. Saya adalah seorang mahasiswa Pendidikan Teknologi Informasi di Universitas Slamet Riyadi Surakarta. Berawal dari pengalaman saya sebagai vokalis utama band saat SMK, kini saya mengeksplorasi harmoni baru melalui dunia teknologi.
                 </p>
                 <p>
-                    Sebagai seorang <i>dreamer</i>, saya senang memadukan nuansa musik yang kuat seperti vibe "Mask Off" ke dalam fokus saya dalam membangun pengalaman digital. Bagi saya, IT bukan sekadar baris kode, melainkan medium kreatif untuk membantu manusia, terutama melalui perkembangan AI yang sangat inspiratif. Saya berkomitmen untuk menciptakan karya yang tidak hanya estetik, namun juga berdampak nyata.
+                    Sebagai seorang <i>dreamer</i>, saya senang memadukan nuansa musik yang kuat seperti vibe "Mask Off" ke dalam fokus saya membangun pengalaman digital. Bagi saya, IT bukan sekadar baris kode, melainkan medium kreatif untuk membantu manusia, terutama melalui perkembangan AI yang sangat inspiratif. Saya berkomitmen untuk menciptakan karya yang tidak hanya estetik, namun juga berdampak nyata bagi dunia.
                 </p>
             </div>
         </div>
